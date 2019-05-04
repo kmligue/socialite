@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::any('superadmin/db', '\Miroc\LaravelAdminer\AdminerAutologinController@index');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
