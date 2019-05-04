@@ -16,7 +16,6 @@ class SocialController extends Controller
 
     public function callback($provider)
     {
-        dd('foobar');
         $userSocial = Socialite::driver($provider)->stateless()->user();
         $users = User::where(['email' => $userSocial->getEmail()])->first();
 
@@ -30,6 +29,7 @@ class SocialController extends Controller
                 'provider_id'   => $userSocial->getId(),
                 'provider'      => $provider,
             ]);
+            dd($user);
             return redirect()->route('home');
         }
     }
